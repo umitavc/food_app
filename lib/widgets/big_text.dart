@@ -16,13 +16,6 @@ class BigText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text, 
-      overflow: overflow,
-       style: TextStyle(
-        fontFamily: 'Roboto',
-         color: color, 
-         fontSize: size==0?Dimensions.font20:size,
-          fontWeight: FontWeight.w400));
+    return Text(text, overflow: overflow, style: TextStyle(fontFamily: 'Roboto', color: color, fontSize: size == 0 ? Dimensions.font20 : size, fontWeight: FontWeight.w400));
   }
 }
