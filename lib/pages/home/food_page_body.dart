@@ -8,14 +8,14 @@ import 'package:food_app/widgets/small_text.dart';
 
 import '../../utils/dimensions.dart';
 
-class FoodPageBod extends StatefulWidget {
-  const FoodPageBod({super.key});
+class FoodPageBody extends StatefulWidget {
+  const FoodPageBody({super.key});
 
   @override
-  State<FoodPageBod> createState() => _FoodPageBodState();
+  State<FoodPageBody> createState() => _FoodPageBodyState();
 }
 
-class _FoodPageBodState extends State<FoodPageBod> {
+class _FoodPageBodyState extends State<FoodPageBody> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currPageValue = 0.0;
   double _scaleFactor = 0.8;
