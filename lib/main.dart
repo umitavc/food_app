@@ -3,6 +3,7 @@ import 'package:food_app/controllers/popular_product_controller.dart';
 import 'package:food_app/pages/food/popular_food_detail.dart';
 import 'package:food_app/pages/food/recommended_food_detail.dart';
 import 'package:food_app/pages/home/food_page_body.dart';
+import 'package:food_app/routes/router_helper.dart';
 import 'package:get/get.dart';
 
 import 'controllers/recommended_product_controller.dart';
@@ -22,13 +23,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<PopularProductController>().getPopularProductList();
     Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
+    return  GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeFoodPage(),
+      
+      home:  const HomeFoodPage(),
+      initialRoute: RouterHelper.initial,
+      getPages:RouterHelper.routes,
     );
   }
 }
