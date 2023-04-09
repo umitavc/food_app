@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/controllers/recommended_product_controller.dart';
 import 'package:food_app/routes/router_helper.dart';
 import 'package:food_app/utils/colors.dart';
 import 'package:food_app/utils/dimensions.dart';
@@ -7,11 +8,15 @@ import 'package:food_app/widgets/big_text.dart';
 import 'package:food_app/widgets/expandable_text_widget.dart';
 import 'package:get/get.dart';
 
+import '../../utils/app_constants.dart';
+
 class RecommendedFoodDetail extends StatelessWidget {
-  const RecommendedFoodDetail({super.key});
+   final int pageId;
+  const  RecommendedFoodDetail({Key? key , required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product = Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -32,18 +37,18 @@ class RecommendedFoodDetail extends StatelessWidget {
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(20),
               child: Container(
-                child: Center(child: BigText(size: Dimensions.font26, text: "Pankek")),
+                child: Center(child: BigText(size: Dimensions.font26, text: product.name!)),
                 width: double.maxFinite,
                 padding: const EdgeInsets.only(top: 5, bottom: 10),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+                decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))),
               ),
             ),
             pinned: true,
             backgroundColor: AppColors.yellewColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-                background: Image.asset(
-              "assets/image/food1.jpg",
+                background: Image.network(
+               AppConstants.BASE_URL+AppConstants.UPLOAD_URL+product.img!,
               width: double.maxFinite,
               fit: BoxFit.cover,
             )),
@@ -53,8 +58,7 @@ class RecommendedFoodDetail extends StatelessWidget {
             children: [
               Container(
                 child: ExpandableTextWidget(
-                    text:
-                        "Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz.Kahvaltılarınızda severek tüketeceğiniz, reçel, marmelat gibi tatlılarla lezzetlendireceğiniz, kaşık dökmesi olarak da bilinen ama tatlı olan bir tarif. Çocuklarınız pankek tarifine bayılacaklar. Günümüzde olan pankek tavaları ile farklı hayvan şekilleri verebileceğiniz böylelikle de çocuklarınızın dikkatini çekecek olan pankek tarifini mutlaka denemelisiniz."),
+                    text: product.description!),
                 margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20),
               )
             ],
@@ -81,7 +85,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                   icon: Icons.remove,
                 ),
                 BigText(
-                  text: "\$12.88 " + " x " + " 0 ",
+                  text: "\$ ${product.price!}  X  0 ",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
@@ -116,7 +120,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(Dimensions.height20),
                   child: BigText(
-                    text: "\$10 | Add to cart",
+                    text: "\$ ${product.price!} | Add to cart",
                     color: Colors.white,
                   ),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.radius20), color: AppColors.mainColor),
