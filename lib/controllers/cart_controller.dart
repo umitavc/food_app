@@ -14,7 +14,7 @@ class CartController extends GetxController {
 
   Map<int, CartModel> get itmes => _items;
 
-  void addItems(ProductsModel product, int quantity) {
+  void addItems(ProductModel product, int quantity) {
     var totalQuantity=0;
     if (_items.containsKey(product.id!)) {
       _items.update(product.id!, (value) {
@@ -27,6 +27,7 @@ class CartController extends GetxController {
           quantity: value.quantity! + quantity,
           isExit: true,
           time: DateTime.now().toString(),
+          product:product,
         );
       });
 
@@ -44,6 +45,7 @@ class CartController extends GetxController {
             quantity: quantity,
             isExit: true,
             time: DateTime.now().toString(),
+            product:product,
           );
         });
       } else {
@@ -55,16 +57,17 @@ class CartController extends GetxController {
         );
       }
     }
+    update();
   }
 
-  bool exitInCart(ProductsModel product) {
+  bool exitInCart(ProductModel product) {
     if (_items.containsKey(product.id)) {
       return true;
     }
     return false;
   }
 
-  getQuantity(ProductsModel product) {
+  getQuantity(ProductModel product) {
     var quantity = 0;
     if (_items.containsKey(product.id)) {
       _items.forEach((key, value) {

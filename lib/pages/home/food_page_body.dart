@@ -119,7 +119,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.toNamed(RouterHelper.getRecomendedFood(index));
+                Get.toNamed(RouterHelper.getRecomendedFood(index,"home"));
               },
               child: Container(
                 margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
@@ -191,7 +191,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     );
   }
 
-  Widget _buildPageItem(int index, ProductsModel popularProducts) {
+  Widget _buildPageItem(int index, ProductModel popularProducts) {
     Matrix4 matrix = new Matrix4.identity();
     if (index == _currPageValue.floor()) {
       var currScale = 1 - (_currPageValue - index) * (1 - _scaleFactor);
@@ -217,7 +217,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         children: [
           GestureDetector(
              onTap: () {
-               Get.toNamed(RouterHelper.getPopularFood(index));
+               Get.toNamed(RouterHelper.getPopularFood(index,"home"));
               },
             child: Container(
                 height: Dimensions.pageViewContainer,
