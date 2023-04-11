@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 
 import '../../controllers/cart_controller.dart';
 import '../../utils/app_constants.dart';
+import '../cart/cart_page.dart';
 
 class RecommendedFoodDetail extends StatelessWidget {
    final int pageId;
@@ -35,7 +36,33 @@ class RecommendedFoodDetail extends StatelessWidget {
                     Get.toNamed(RouterHelper.getInitial());
                   },
                   child:const  AppIcon(icon: Icons.clear)), 
-                const AppIcon(icon: Icons.shopping_cart_outlined)],
+                //const AppIcon(icon: Icons.shopping_cart_outlined),
+
+                GetBuilder<PopularProductController>(builder: (controller){
+                  return Stack(children:  [
+                     GestureDetector(
+                      onTap: () {
+                        Get.to(()=>CartPage());
+                      },
+                      child: AppIcon(icon: Icons.shopping_cart_outlined)),
+                    Get.find<PopularProductController>().totalItems>=1?
+                    Positioned(
+                      right: 0, top: 0,
+                      child: AppIcon(icon: Icons.circle,size: 20,iconColor: Colors.transparent,backgroundColor: AppColors.mainColor,))
+                    :
+                    Container(),
+                     Get.find<PopularProductController>().totalItems>=1?
+                    Positioned(
+                      right: 3, top: 3,
+                      child:BigText(text: Get.find<PopularProductController>().totalItems.toString(),
+                      size: 12, color: Colors.white,
+                      )
+                      )
+                    :
+                    Container(),
+                  ],);
+                })
+                ],
             ),
             bottom: PreferredSize(
               preferredSize: Size.fromHeight(20),

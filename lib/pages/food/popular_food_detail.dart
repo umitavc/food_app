@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import '../../controllers/cart_controller.dart';
 import '../../utils/colors.dart';
 import '../../widgets/big_text.dart';
+import '../cart/cart_page.dart';
 import '../home/main_food_page.dart';
 
 class PopularFoodDetail extends StatelessWidget {
@@ -51,7 +52,12 @@ class PopularFoodDetail extends StatelessWidget {
                     Get.find<PopularProductController>().totalItems>=1?
                     Positioned(
                       right: 0, top: 0,
-                      child: AppIcon(icon: Icons.circle,size: 20,iconColor: Colors.transparent,backgroundColor: AppColors.mainColor,))
+                      child: GestureDetector(
+                        onTap: () {
+                          
+                          Get.to(()=>CartPage());
+                        },
+                        child: AppIcon(icon: Icons.circle,size: 20,iconColor: Colors.transparent,backgroundColor: AppColors.mainColor,)))
                     :
                     Container(),
                      Get.find<PopularProductController>().totalItems>=1?
@@ -136,18 +142,20 @@ class PopularFoodDetail extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(Dimensions.height20),
-              child: GestureDetector(
-                onTap: (){
-                  popularProduct.addItem(product);
-                },
-                child: BigText(
-                  text: "\$ ${product.price!} | Add to cart",
-                  color: Colors.white,
-                ),
+            GestureDetector(
+              onTap: () {
+                popularProduct.addItem(product);
+              },
+              child: Container(
+                padding: EdgeInsets.all(Dimensions.height20),
+                
+                  child: BigText(
+                    text: "\$ ${product.price!} | Add to cart",
+                    color: Colors.white,
+                  ),
+                
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.radius20), color: AppColors.mainColor),
               ),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(Dimensions.radius20), color: AppColors.mainColor),
             )
           ],
         ),
