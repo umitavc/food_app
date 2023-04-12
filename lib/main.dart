@@ -4,6 +4,7 @@ import 'package:food_app/pages/cart/cart_page.dart';
 import 'package:food_app/pages/food/popular_food_detail.dart';
 import 'package:food_app/pages/food/recommended_food_detail.dart';
 import 'package:food_app/pages/home/food_page_body.dart';
+import 'package:food_app/pages/splash/splash_page.dart';
 import 'package:food_app/routes/router_helper.dart';
 import 'package:get/get.dart';
 
@@ -18,19 +19,21 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+const MyApp({Key? key}) : super(key: key); 
 
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+    
+   return GetBuilder<PopularProductController>(builder: (_){
+      return GetBuilder<RecommendedProductController>(builder: (_){
+         return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Flutter Demo',
       
-      home: const HomeFoodPage(),
-      initialRoute: RouterHelper.initial,
-      getPages: RouterHelper.routes,
+            initialRoute: RouterHelper.getSplashPage(),
+            getPages: RouterHelper.routes,
     );
+      });
+   });
   }
 }
