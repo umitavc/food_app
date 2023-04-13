@@ -17,14 +17,16 @@ class RouterHelper {
 
   static String getSplashPage()=>'$splashPage';
   static String getInitial()=>'$initial';
-  static  String getPopularFood(int pageId, String page)=>"$popularFood?pageId=$pageId&page=$page";
-  static  String getRecomendedFood( int pageId,String page)=>"$recommendedFood?pageId=$pageId&page=$page";
+  static  String getPopularFood(int pageId, String page)=>'$popularFood?pageId=$pageId&page=$page';
+  static  String getRecomendedFood( int pageId,String page)=>'$recommendedFood?pageId=$pageId&page=$page';
   static String getCartPage()=>'$cartPage';
   
 
   static List<GetPage> routes = [
     GetPage(name: splashPage, page: () =>SplashScreen()),
+
     GetPage(name: initial, page: () => HomePage()),
+
     GetPage(name: popularFood,page: () {
       var pageId=Get.parameters['pageId'];
       var page =Get.parameters["page"];
